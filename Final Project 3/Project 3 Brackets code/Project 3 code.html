@@ -1,0 +1,48 @@
+<html>
+    <style>
+    
+    
+   
+    
+    
+    </style>
+    
+    
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.5/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.5/addons/p5.dom.js"></script>
+	<script src="../lib/p5.speech.js"></script>
+	<script>
+//above calls certain p5.js libraries either online or through a file connected. This helps the project operate
+	   var myRec = new p5.SpeechRec(); // new P5.SpeechRec object
+        //var soundArray = [];
+        
+ 
+        
+	function setup(){ 
+    
+        let lang = navigator.language || 'en-US';//sets the language of the speech to text, in this case it is US English
+        let speechRec = new p5.SpeechRec(lang, gotSpeech)//allows speech recording 
+        let continuous = true;//continuously records
+        let interim = false;//makes sure it takes a break while recording
+        speechRec.start(continuous, interim);//starts speech recording 
+        createP("Who are you? With the I AM movement you can tell us who you are and see what other people have to say about themselves.").addClass('text');//prompts user to answer questions displayed on screen
+        
+      function gotSpeech (){
+            
+            if (speechRec.resultValue){//looks for any speech input from user
+                 
+              createP("I AM " + speechRec.resultString); //displayes speech input to screen
+               
+            }  
+        }  
+    }
+	
+ //code inspired by the Coding Train. While this is not our desired final project, we tried our best to get our microphone working with arduino which caused many problems.   
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>
